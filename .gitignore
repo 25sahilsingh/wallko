@@ -22,3 +22,29 @@ tools/plantdb/cache/
 tools/ml-research/out/
 tools/ml-research/venv/
 .kotlin/
+
+# Android Studio / IntelliJ project files (regenerated on Gradle import)
+/.idea/
+
+# Claude Code local settings
+.claude/
+
+# Signing material and secrets (never commit)
+*.jks
+*.keystore
+*.p12
+*.pem
+keystore.properties
+signing.properties
+google-services.json
+.env
+.env.*
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Logs and OS junk
+*.log
+*.hprof
+Thumbs.db
