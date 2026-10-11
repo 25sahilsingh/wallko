@@ -22,6 +22,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        // Phones only: drops the x86/x86_64 native libs (emulators), about 40% of the APK.
+        ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") }
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
