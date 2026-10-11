@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import com.example.wallko.game.DailyTickScheduler
+import com.example.wallko.ml.classifier.BioClipDownloadWorker
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
@@ -17,5 +18,6 @@ class WallkoApp : Application(), Configuration.Provider {
     override fun onCreate() {
         super.onCreate()
         DailyTickScheduler.schedule(this)
+        BioClipDownloadWorker.enqueueIfNeeded(this)
     }
 }

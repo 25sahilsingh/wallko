@@ -25,9 +25,10 @@ import kotlinx.coroutines.withContext
  * BioCLIP image encoder (ONNX Runtime, int8) + precomputed text table: names a plant photo from a
  * custom species list (AIY's labels + houseplants). See docs/ml-research.md.
  *
- * The model is too big for the APK, so it is read from `<external files>/bioclip/` ([DIR]). Missing
- * files mean "not available" (checked again on the next call); a file that fails to load disables
- * BioCLIP until the app restarts. Loading and inference run on one dedicated thread.
+ * The model is too big for the APK: [BioClipDownloadWorker] downloads it into `<files>/bioclip/`, and
+ * `<external files>/bioclip/` (adb push, for development) is used if the download isn't there
+ * ([candidateDirs]). Missing files mean "not available" (checked again on the next call); a file that
+ * fails to load disables BioCLIP until the app restarts. Loading and inference run on one dedicated thread.
  */
 @Singleton
 class BioClipNamer @Inject constructor(
@@ -49,9 +50,9 @@ class BioClipNamer @Inject constructor(
     private fun engine(): Engine? {
         engine?.let { return it }
         if (failed) return null
-        val dir = File(context.getExternalFilesDir(null) ?: return null, DIR)
-        val files = listOf(MODEL_FILE, TABLE_FILE, LABELS_FILE).map { File(dir, it) }
-        if (!files.all { it.isFile }) return null
+        val dir = BioClipFiles.firstComplete(candidateDirs(context)) ?: return null
+        val files = BioClipFiles.ALL.map { File(dir, it.name) }
+        Log.i(TAG, "Loading BioCLIP from $dir")
         return try {
             Engine.load(files[0], files[1], files[2]).also { engine = it }
         } catch (e: Throwable) {
@@ -119,10 +120,13 @@ class BioClipNamer @Inject constructor(
 
     companion object {
         private const val TAG = "BioClipNamer"
-        const val DIR = "bioclip"
-        const val MODEL_FILE = "bioclip_img_int8.onnx"
-        const val TABLE_FILE = "text_table_f32.bin"
-        const val LABELS_FILE = "text_labels.txt"
         private const val INPUT_NAME = "pixels"
+
+        /** Where [BioClipDownloadWorker] puts the files (internal storage). */
+        fun downloadDir(context: Context): File = File(context.filesDir, BioClipFiles.DIR)
+
+        /** Where the files are looked for, first match wins: the download, then the adb-push dir. */
+        fun candidateDirs(context: Context): List<File?> =
+            listOf(downloadDir(context), context.getExternalFilesDir(null)?.let { File(it, BioClipFiles.DIR) })
     }
 }
