@@ -11,8 +11,8 @@ held the venv, the models and the test photos, so all of those need rebuilding (
 | "Not a plant" rule (AIY background ≥ 0.30 → no guesses; each guess must be ≥ 0.30) | In app, unit-tested, **installed on phone** |
 | Pink sprite fix (style blended 0.4 with the photo's own style) | In app, installed |
 | Collection "Epic" chip off screen (rarity chips now wrap with FlowRow) | In app, installed |
-| BioCLIP on-device speed test (`androidTest/.../ml/BioClipDeviceTest.kt`) | Written and builds; **not run yet** |
-| BioCLIP in the real scan flow | Not started; waits on the phone speed result and user OK |
+| BioCLIP on-device speed test (`androidTest/.../ml/BioClipDeviceTest.kt`) | **Run** on Redmi 21061119BI (8 cores, int8, 4 threads): load 794 ms, about 620–720 ms per photo. Right: lucky bamboo 0.98, tulsi 1.00, Red Campion 0.99. Wrong: areca → Nikau palm 0.37, bean → Kudzu 0.20 (no bean in the list), money plant crop → Butcher's-broom 0.35 (money plant 2nd at 0.13). Rooms: low random names 0.12–0.47 |
+| BioCLIP in the real scan flow | On branch `bioclip-scan`, built; waits on phone test. Hybrid as planned below, see [ml-pipeline.md](ml-pipeline.md#identify-synchronous-during-scan). Debug APK 163 → 313 MB (ONNX Runtime for 4 ABIs) |
 
 ## The problem
 
@@ -67,17 +67,18 @@ so it either guesses wrong or scores very low.
 | Bean | Kudzu 0.72 ❌ (bean isn't in the list; add it) |
 | Rooms | **Not rejected**: BioCLIP always picks *some* species |
 
-## Planned design (hybrid, needs user OK)
+## Planned design (hybrid; built on branch `bioclip-scan`)
 
 1. **AIY = gate.** Keep the existing background-score rule to reject non-plants. BioCLIP can't do this.
 2. **BioCLIP = namer.** If AIY says "plant", BioCLIP names it from the custom list (AIY species +
    houseplants + Indian plants).
 3. Keep `MIN_GUESS_SCORE` and the confidence rule from `GameRules.Ml` on the BioCLIP scores.
 4. **Runtime: ONNX Runtime Android** (`com.microsoft.onnxruntime:onnxruntime-android:1.31.0`, now
-   `androidTestImplementation` only). TFLite conversion was abandoned because `ai-edge-torch` pulls
+   `implementation`). TFLite conversion was abandoned because `ai-edge-torch` pulls
    GBs of CUDA libraries.
 5. **Open questions:**
-   - Size: 87 MB model vs. current APK. Ship in the APK or download on first run?
+   - Size: 87 MB model vs. current APK. For now it is not shipped: the app reads it from
+     `<external files>/bioclip/` (pushed with adb) and falls back to AIY without it. A download is still open.
    - ORT adds about 30 MB per ABI. Limit ABIs (`arm64-v8a`) only after explaining to the user.
    - Scan latency on a mid-range phone. The device test answers this.
 
