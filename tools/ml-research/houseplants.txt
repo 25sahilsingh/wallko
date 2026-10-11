@@ -1,0 +1,60 @@
+Epipremnum aureum|Money plant (Golden pothos)
+Dracaena sanderiana|Lucky bamboo
+Dypsis lutescens|Areca palm
+Chamaedorea elegans|Parlor palm
+Rhapis excelsa|Lady palm
+Bambusa vulgaris|Common bamboo
+Phyllostachys aurea|Golden bamboo
+Monstera deliciosa|Monstera
+Sansevieria trifasciata|Snake plant
+Chlorophytum comosum|Spider plant
+Zamioculcas zamiifolia|ZZ plant
+Spathiphyllum wallisii|Peace lily
+Ficus elastica|Rubber plant
+Ficus benghalensis|Banyan
+Ficus religiosa|Peepal tree
+Aloe vera|Aloe vera
+Ocimum tenuiflorum|Tulsi (Holy basil)
+Syngonium podophyllum|Arrowhead plant
+Philodendron hederaceum|Heartleaf philodendron
+Aglaonema commutatum|Chinese evergreen
+Dieffenbachia seguine|Dumb cane
+Codiaeum variegatum|Croton
+Crassula ovata|Jade plant
+Portulacaria afra|Elephant bush
+Pilea peperomioides|Chinese money plant
+Pachira aquatica|Money tree
+Schefflera arboricola|Dwarf umbrella tree
+Dracaena fragrans|Corn plant
+Dracaena marginata|Dragon tree
+Dracaena trifasciata|Snake plant
+Hedera helix|English ivy
+Nephrolepis exaltata|Boston fern
+Asplenium nidus|Bird's nest fern
+Anthurium andraeanum|Anthurium
+Begonia rex|Rex begonia
+Calathea ornata|Calathea
+Maranta leuconeura|Prayer plant
+Tradescantia zebrina|Wandering dude
+Peperomia obtusifolia|Baby rubber plant
+Cycas revoluta|Sago palm
+Beaucarnea recurvata|Ponytail palm
+Hibiscus rosa-sinensis|Hibiscus
+Rosa chinensis|China rose
+Bougainvillea glabra|Bougainvillea
+Jasminum sambac|Arabian jasmine (Mogra)
+Tagetes erecta|Marigold
+Catharanthus roseus|Madagascar periwinkle (Sadabahar)
+Mangifera indica|Mango tree
+Azadirachta indica|Neem tree
+Musa acuminata|Banana plant
+Carica papaya|Papaya tree
+Cocos nucifera|Coconut palm
+Areca catechu|Betel nut palm
+Murraya koenigii|Curry leaf
+Mentha spicata|Mint
+Coleus scutellarioides|Coleus
+Euphorbia milii|Crown of thorns
+Adenium obesum|Desert rose
+Nerium oleander|Oleander
+Plumeria rubra|Frangipani

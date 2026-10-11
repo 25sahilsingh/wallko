@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Small notification icon: a single water drop (white silhouette, tinted by the system). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M12,2.5C12,2.5 5,10.2 5,14.8C5,18.8 8.1,21.5 12,21.5C15.9,21.5 19,18.8 19,14.8C19,10.2 12,2.5 12,2.5ZM9.2,14.2C9.7,14.2 10.1,14.6 10.1,15.1C10.1,16.4 11,17.4 12.3,17.6C12.8,17.7 13.1,18.1 13.1,18.6C13,19.1 12.6,19.4 12.1,19.4C9.9,19.1 8.3,17.3 8.3,15.1C8.3,14.6 8.7,14.2 9.2,14.2Z" />
+</vector>

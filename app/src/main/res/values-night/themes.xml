@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Wallko" parent="android:Theme.Material.NoActionBar">
+        <!-- Warm dark background (design-system.md) so dark mode doesn't flash Cream. -->
+        <item name="android:windowBackground">@color/night_background</item>
+        <item name="android:colorBackground">@color/night_background</item>
+        <item name="android:colorPrimary">@color/grass</item>
+        <item name="android:colorAccent">@color/sky</item>
+    </style>
+</resources>

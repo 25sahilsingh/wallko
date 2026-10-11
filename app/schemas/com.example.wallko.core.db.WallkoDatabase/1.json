@@ -1,0 +1,535 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "81b7dddb6bc6ab73eb6aab3f29ed9719",
+    "entities": [
+      {
+        "tableName": "plant_species",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`index` INTEGER NOT NULL, `latin` TEXT NOT NULL, `common` TEXT, `family` TEXT, `type` TEXT, `description` TEXT, `observations` INTEGER NOT NULL, `rarity` TEXT NOT NULL, `thirst` INTEGER NOT NULL, `sun` INTEGER NOT NULL, `growth` TEXT NOT NULL, `bloom` TEXT NOT NULL, `badges` TEXT NOT NULL, `sources` TEXT NOT NULL, `dbVersion` INTEGER NOT NULL, PRIMARY KEY(`index`))",
+        "fields": [
+          {
+            "fieldPath": "index",
+            "columnName": "index",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latin",
+            "columnName": "latin",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "common",
+            "columnName": "common",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "family",
+            "columnName": "family",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "observations",
+            "columnName": "observations",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rarity",
+            "columnName": "rarity",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thirst",
+            "columnName": "thirst",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sun",
+            "columnName": "sun",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "growth",
+            "columnName": "growth",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bloom",
+            "columnName": "bloom",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "badges",
+            "columnName": "badges",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sources",
+            "columnName": "sources",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dbVersion",
+            "columnName": "dbVersion",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "index"
+          ]
+        }
+      },
+      {
+        "tableName": "owned_plant",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `speciesIndex` INTEGER NOT NULL, `foundAt` INTEGER NOT NULL, `foundLat` REAL, `foundLng` REAL, `placeName` TEXT, `photoPath` TEXT NOT NULL, `spritePath` TEXT, `styleId` TEXT NOT NULL, `plantedAt` INTEGER NOT NULL, `lastDrankAt` INTEGER, `state` TEXT NOT NULL, `daysUnwatered` INTEGER NOT NULL, `growthDays` INTEGER NOT NULL, `gardenX` INTEGER NOT NULL, `gardenY` INTEGER NOT NULL, `onShelf` INTEGER NOT NULL, FOREIGN KEY(`speciesIndex`) REFERENCES `plant_species`(`index`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speciesIndex",
+            "columnName": "speciesIndex",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foundAt",
+            "columnName": "foundAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foundLat",
+            "columnName": "foundLat",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "foundLng",
+            "columnName": "foundLng",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "placeName",
+            "columnName": "placeName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "photoPath",
+            "columnName": "photoPath",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spritePath",
+            "columnName": "spritePath",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "styleId",
+            "columnName": "styleId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plantedAt",
+            "columnName": "plantedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastDrankAt",
+            "columnName": "lastDrankAt",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "state",
+            "columnName": "state",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "daysUnwatered",
+            "columnName": "daysUnwatered",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "growthDays",
+            "columnName": "growthDays",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gardenX",
+            "columnName": "gardenX",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gardenY",
+            "columnName": "gardenY",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "onShelf",
+            "columnName": "onShelf",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_owned_plant_speciesIndex",
+            "unique": false,
+            "columnNames": [
+              "speciesIndex"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_owned_plant_speciesIndex` ON `${TABLE_NAME}` (`speciesIndex`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "plant_species",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "speciesIndex"
+            ],
+            "referencedColumns": [
+              "index"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "wallet",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `waterDrops` INTEGER NOT NULL, `elixir` INTEGER NOT NULL, `tankCapacity` INTEGER NOT NULL, `elixirProgressM` REAL NOT NULL, `lastTickAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "waterDrops",
+            "columnName": "waterDrops",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "elixir",
+            "columnName": "elixir",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tankCapacity",
+            "columnName": "tankCapacity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "elixirProgressM",
+            "columnName": "elixirProgressM",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastTickAt",
+            "columnName": "lastTickAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "ledger_entry",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `at` INTEGER NOT NULL, `kind` TEXT NOT NULL, `drops` INTEGER NOT NULL, `elixir` INTEGER NOT NULL, `note` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "at",
+            "columnName": "at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kind",
+            "columnName": "kind",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "drops",
+            "columnName": "drops",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "elixir",
+            "columnName": "elixir",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "note",
+            "columnName": "note",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_ledger_entry_at",
+            "unique": false,
+            "columnNames": [
+              "at"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ledger_entry_at` ON `${TABLE_NAME}` (`at`)"
+          }
+        ]
+      },
+      {
+        "tableName": "walk",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `startedAt` INTEGER NOT NULL, `endedAt` INTEGER, `distanceM` REAL NOT NULL, `steps` INTEGER NOT NULL, `newCells` INTEGER NOT NULL, `dropsEarned` INTEGER NOT NULL, `elixirEarned` INTEGER NOT NULL, `dawn` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startedAt",
+            "columnName": "startedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endedAt",
+            "columnName": "endedAt",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "distanceM",
+            "columnName": "distanceM",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "steps",
+            "columnName": "steps",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "newCells",
+            "columnName": "newCells",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dropsEarned",
+            "columnName": "dropsEarned",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "elixirEarned",
+            "columnName": "elixirEarned",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dawn",
+            "columnName": "dawn",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "walk_point",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `walkId` INTEGER NOT NULL, `at` INTEGER NOT NULL, `lat` REAL NOT NULL, `lng` REAL NOT NULL, FOREIGN KEY(`walkId`) REFERENCES `walk`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "walkId",
+            "columnName": "walkId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "at",
+            "columnName": "at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lat",
+            "columnName": "lat",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lng",
+            "columnName": "lng",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_walk_point_walkId",
+            "unique": false,
+            "columnNames": [
+              "walkId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_walk_point_walkId` ON `${TABLE_NAME}` (`walkId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "walk",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "walkId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "explored_cell",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`cellId` INTEGER NOT NULL, `firstVisitedAt` INTEGER NOT NULL, PRIMARY KEY(`cellId`))",
+        "fields": [
+          {
+            "fieldPath": "cellId",
+            "columnName": "cellId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstVisitedAt",
+            "columnName": "firstVisitedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "cellId"
+          ]
+        }
+      },
+      {
+        "tableName": "step_day",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`epochDay` INTEGER NOT NULL, `steps` INTEGER NOT NULL, `dropsCredited` INTEGER NOT NULL, PRIMARY KEY(`epochDay`))",
+        "fields": [
+          {
+            "fieldPath": "epochDay",
+            "columnName": "epochDay",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "steps",
+            "columnName": "steps",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dropsCredited",
+            "columnName": "dropsCredited",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "epochDay"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '81b7dddb6bc6ab73eb6aab3f29ed9719')"
+    ]
+  }
+}

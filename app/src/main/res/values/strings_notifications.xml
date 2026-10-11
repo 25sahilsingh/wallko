@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Notification channels -->
+    <string name="notif_channel_walk_name">Walk reminders</string>
+    <string name="notif_channel_walk_description">A friendly morning nudge from Drip to go for a walk.</string>
+    <string name="notif_channel_plants_name">Plant alerts</string>
+    <string name="notif_channel_plants_description">Tells you when a plant in your garden is wilting.</string>
+
+    <!-- Morning walk nudge (Drip speaking) -->
+    <string name="notif_nudge_title">Good morning from Drip!</string>
+    <string name="notif_nudge_text">My tank could use a top-up. A short walk keeps your garden happy and green!</string>
+
+    <!-- Wilting alert. %1$s = plant names joined with commas. -->
+    <plurals name="notif_wilting_title">
+        <item quantity="one">A plant is wilting</item>
+        <item quantity="other">%1$d plants are wilting</item>
+    </plurals>
+    <plurals name="notif_wilting_text">
+        <item quantity="one">%1$s is thirsty! Take a walk so Drip can water it.</item>
+        <item quantity="other">%1$s are thirsty! Take a walk so Drip can water them.</item>
+    </plurals>
+</resources>

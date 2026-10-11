@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Camera permission -->
+    <string name="scan_permission_bubble">I need your camera to meet new plants! Photos stay on your phone.</string>
+    <string name="scan_permission_allow">Let\'s look!</string>
+    <string name="scan_permission_denied_bubble">No camera, no plant friends… Want to try again?</string>
+    <string name="scan_permission_try_again">Try again</string>
+    <string name="scan_permission_forever_bubble">The camera is switched off for Wallko. You can turn it on in Settings.</string>
+    <string name="scan_permission_open_settings">Open Settings</string>
+
+    <!-- Camera -->
+    <string name="scan_viewfinder_description">Camera preview</string>
+    <string name="scan_hint">Fill the frame with one plant</string>
+    <string name="scan_capture">Take photo</string>
+    <string name="scan_starting_camera">Waking up the camera…</string>
+    <string name="scan_capturing">Snap!</string>
+    <string name="scan_identifying">Hmm, let me think…</string>
+    <string name="scan_planting">Planting your new friend…</string>
+    <string name="scan_error_capture">Oops, the photo didn\'t work. Let\'s try again!</string>
+    <string name="scan_error_identify">I couldn\'t read that photo. Let\'s try again!</string>
+    <string name="scan_error_save">Something went wrong planting it. Please try again.</string>
+    <string name="scan_error_unknown_species">I don\'t know that one yet. Try another plant!</string>
+    <string name="scan_ok">OK</string>
+    <string name="scan_error_camera">I can\'t open the camera right now. Is another app using it?</string>
+
+    <!-- Result sheet -->
+    <string name="scan_result_title_confident">I think it\'s…</string>
+    <string name="scan_result_title_unsure">Could be one of these</string>
+    <string name="scan_result_unsure">Hmm, get closer or try another angle</string>
+    <string name="scan_tip_closer">Get close so one plant fills the frame</string>
+    <string name="scan_tip_leaves">Show the leaves or flowers clearly</string>
+    <string name="scan_tip_light">Find good light and hold steady</string>
+    <string name="scan_result_pick">Tap the one that looks right</string>
+    <string name="scan_result_confirm">That\'s it!</string>
+    <string name="scan_result_retake">Retake</string>
+    <string name="scan_result_photo">Your photo</string>
+    <string name="scan_in_garden_chip">In your garden</string>
+    <string name="scan_guess_selected">Selected</string>
+    <string name="scan_result_title_none">No plant found</string>
+    <string name="scan_no_guesses">I couldn\'t spot a plant I know there. Point me at leaves or flowers and try again!</string>
+
+    <!-- Duplicates -->
+    <string name="scan_already_in_garden">%1$s is already in your garden!</string>
+
+    <!-- Card -->
+    <string name="card_new">New plant!</string>
+    <string name="card_rare_bonus">+%1$d drops for a rare find!</string>
+    <string name="card_bloom_label">Blooms</string>
+    <string name="card_bloom_all_year">All year</string>
+    <string name="card_bloom_unknown">Not known yet</string>
+    <string name="card_badges_label">Badges</string>
+    <string name="card_found_on">Found on %1$s</string>
+    <string name="card_found_on_at">Found on %1$s at %2$s</string>
+    <string name="card_estimated_hint">Estimated value</string>
+    <string name="card_thirst">Thirst</string>
+    <string name="card_sun">Sun</string>
+    <string name="card_growth">Growth</string>
+    <string name="card_family">Family: %1$s</string>
+    <string name="card_loading">Opening the card…</string>
+    <string name="card_not_found">This card has blown away in the wind.</string>
+    <string name="card_close">Close</string>
+    <string name="card_back">Back</string>
+    <string name="card_hero_description">%1$s in a pot</string>
+
+    <!-- Accessibility -->
+    <string name="scan_tip_bullet">• %1$s</string>
+    <string name="scan_guess_confidence">%1$d of 5 leaves confidence</string>
+    <string name="scan_guess_rarity">%1$s rarity</string>
+    <string name="scan_rarity_common">Common</string>
+    <string name="scan_rarity_uncommon">Uncommon</string>
+    <string name="scan_rarity_rare">Rare</string>
+    <string name="scan_rarity_epic">Epic</string>
+    <string name="scan_rarity_legendary">Legendary</string>
+    <string name="scan_capture_disabled">Camera is still waking up</string>
+</resources>

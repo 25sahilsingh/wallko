@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="map_squares_explored">
+        <item quantity="one">%d square explored</item>
+        <item quantity="other">%d squares explored</item>
+    </plurals>
+    <string name="map_attribution">© OpenStreetMap contributors · OpenFreeMap</string>
+    <string name="map_recentre">Centre on Drip</string>
+    <string name="map_show_meadow">Show meadow view</string>
+    <string name="map_show_streets">Show street map</string>
+    <string name="map_offline_note">No map tiles right now, here\'s your meadow!</string>
+    <string name="map_meadow_description">Meadow map of the squares you have explored</string>
+    <string name="map_elixir_earned">+1 elixir!</string>
+    <plurals name="map_meadow_content_description">
+        <item quantity="one">Meadow map with %d explored square</item>
+        <item quantity="other">Meadow map with %d explored squares</item>
+    </plurals>
+    <plurals name="map_street_content_description">
+        <item quantity="one">Street map with %d explored square</item>
+        <item quantity="other">Street map with %d explored squares</item>
+    </plurals>
+</resources>

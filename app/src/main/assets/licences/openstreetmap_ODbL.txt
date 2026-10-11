@@ -1,0 +1,19 @@
+Map data © OpenStreetMap contributors
+
+The map shows data from OpenStreetMap, which is made available under the
+Open Data Commons Open Database License (ODbL) 1.0.
+
+You are free to copy, distribute, transmit and adapt the data, as long as you
+credit OpenStreetMap and its contributors. If you alter or build upon the
+data, you may distribute the result only under the same licence.
+
+Copyright and licence details: https://www.openstreetmap.org/copyright
+Full ODbL 1.0 text: https://opendatacommons.org/licenses/odbl/1-0/
+
+Map tiles are served by OpenFreeMap (https://openfreemap.org), free and
+without an API key, using the OpenMapTiles vector schema
+(© OpenMapTiles, https://openmaptiles.org). Wallko re-colours the
+"Positron" style in its own pastel palette.
+
+Only map tiles are downloaded. Your walks, plants and explored areas never
+leave your phone.

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Notification -->
+    <string name="walk_channel_name">Walk tracking</string>
+    <string name="walk_channel_description">Shows your walk while Wallko is measuring it</string>
+    <string name="walk_notification_starting">Getting ready to walk…</string>
+    <string name="walk_notification_stop">Stop walk</string>
+
+    <!-- Idle -->
+    <string name="walk_title">Walk</string>
+    <string name="walk_idle_bubble">Ready for a stroll? Every step fills my water tank!</string>
+    <string name="walk_idle_bubble_dawn">Early bird! Walks started before 7 am earn double drops.</string>
+    <string name="walk_start">Start walk</string>
+
+    <!-- Live -->
+    <string name="walk_stop">Stop</string>
+    <string name="walk_elapsed_label">Time</string>
+    <string name="walk_distance_label">Distance</string>
+    <string name="walk_steps_label">Steps</string>
+    <string name="walk_steps_off">Steps off</string>
+    <string name="walk_new_areas_label">New areas</string>
+    <string name="walk_drops_label">Drops</string>
+    <string name="walk_gps_searching">Looking for GPS… step outside for a clearer sky.</string>
+    <string name="walk_warming_up">Walk at least 2 minutes and 100 m to start earning.</string>
+    <string name="walk_elixir_progress">%1$d m of %2$d m toward the next elixir</string>
+    <string name="walk_starting">Getting my boots on…</string>
+    <string name="walk_finishing">Counting your drops…</string>
+
+    <!-- Summary -->
+    <string name="walk_summary_title">Great walk!</string>
+    <string name="walk_summary_too_short">That one was a bit short. Walks need 2 minutes and 100 m to earn drops.</string>
+    <string name="walk_summary_error">Hmm, I couldn\'t save that walk properly.</string>
+    <string name="walk_summary_line_distance">Distance</string>
+    <string name="walk_summary_line_cells">New areas</string>
+    <string name="walk_summary_line_dawn">Early-bird bonus</string>
+    <string name="walk_summary_total">Total</string>
+    <string name="walk_summary_overflow">Your tank is full, %1$d drops splashed over.</string>
+    <string name="walk_summary_elixir">You brewed %1$d elixir!</string>
+    <string name="walk_summary_done">Yay!</string>
+
+    <!-- Passive steps -->
+    <string name="walk_steps_today_title">Today\'s steps</string>
+    <string name="walk_steps_today_value">%1$s steps</string>
+    <string name="walk_steps_today_drops">+%1$d drops today</string>
+    <string name="walk_steps_from_hc">from Health Connect</string>
+    <string name="walk_steps_from_sensor">from your phone\'s step counter</string>
+    <string name="walk_steps_none">I can\'t see your steps yet.</string>
+    <string name="walk_connect_hc">Connect Health Connect</string>
+    <string name="walk_install_hc">Get Health Connect</string>
+    <string name="walk_allow_activity">Allow step counting</string>
+
+    <!-- Permissions -->
+    <string name="walk_perm_rationale">To measure your walk and find new places, I need to know where you are. I only look while a walk is running, and you\'ll always see a little notification.</string>
+    <string name="walk_perm_rationale_ok">Sounds good</string>
+    <string name="walk_perm_denied">No worries! Without location I can\'t measure your walk. Want to try again?</string>
+    <string name="walk_perm_try_again">Try again</string>
+    <string name="walk_perm_denied_forever">Location is switched off for Wallko. You can turn it on in Settings › Permissions › Location.</string>
+    <string name="walk_perm_need_precise">I only got your rough spot. Walks need precise location, please pick \"Precise\" in Settings.</string>
+    <string name="walk_perm_open_settings">Open settings</string>
+    <string name="walk_perm_not_now">Not now</string>
+
+    <!-- Live stats / accessibility -->
+    <string name="walk_steps_unknown" translatable="false">—</string>
+    <string name="walk_steps_unknown_description">Step counting is off</string>
+    <string name="walk_float_drops">+%1$d</string>
+    <plurals name="walk_drops_live_description">
+        <item quantity="one">%d drop earned so far</item>
+        <item quantity="other">%d drops earned so far</item>
+    </plurals>
+    <string name="walk_stat_description">%1$s: %2$s</string>
+</resources>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Wallko</string>
+
+    <string name="tab_garden">Garden</string>
+    <string name="tab_scan">Scan</string>
+    <string name="tab_walk">Walk</string>
+    <string name="tab_map">Map</string>
+
+    <string name="garden_empty">Let\'s find your first plant!</string>
+    <string name="garden_empty_action">Scan a plant</string>
+    <string name="scan_empty">Point me at a plant and I\'ll tell you who it is!</string>
+    <string name="walk_empty">Ready for a stroll? Every step fills my water tank!</string>
+    <string name="map_empty">It\'s all foggy out there. Let\'s go explore!</string>
+
+    <string name="drip_description">Drip the watering can</string>
+</resources>

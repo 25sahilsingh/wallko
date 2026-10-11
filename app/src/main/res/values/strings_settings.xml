@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Settings polish, data export and licences (Phase 7). Older settings_* strings live in strings_garden.xml. -->
+<resources>
+    <string name="settings_reminders_on">Reminders on</string>
+    <string name="settings_reminders_off">Reminders off</string>
+    <string name="settings_reminder_time_cd">Reminder time, %1$s. Double tap to change.</string>
+    <string name="settings_style_selected_cd">%1$s, selected</string>
+    <string name="settings_units_hint">Used for walk distances and the map.</string>
+    <string name="settings_data_hint">Save your plants, walks and explored map as one JSON file. Photos stay on your phone; the file only lists where they are.</string>
+    <string name="settings_export_working">Exporting…</string>
+    <string name="settings_export_done">Saved %1$d plants and %2$d walks.</string>
+    <string name="settings_export_failed">Couldn\'t save the export. Try another folder.</string>
+    <string name="settings_export_no_picker">No file picker found on this phone.</string>
+    <string name="settings_garden_style_header">Garden style</string>
+    <string name="settings_about_licences">About &amp; licences</string>
+
+    <string name="licences_title">About &amp; licences</string>
+    <string name="licences_app_name">Wallko</string>
+    <string name="licences_version">Version %1$s</string>
+    <string name="licences_made_with_love">Made with love for slow walks, small plants and curious people. No accounts, no ads: everything you find stays on your phone.</string>
+    <string name="licences_thanks">Wallko stands on the shoulders of these open projects. Tap one to read its licence.</string>
+    <string name="licences_expand_cd">Show licence text</string>
+    <string name="licences_collapse_cd">Hide licence text</string>
+    <string name="licences_expanded">Expanded</string>
+    <string name="licences_collapsed">Collapsed</string>
+    <string name="licences_loading">Loading…</string>
+    <string name="licences_missing">Licence text not found.</string>
+</resources>

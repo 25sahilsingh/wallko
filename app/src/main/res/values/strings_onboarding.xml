@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Story pages -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_lets_go">Let\'s go!</string>
+    <string name="onboarding_page_indicator">Page %1$d of %2$d</string>
+
+    <string name="onboarding_story1_title">Find plants, keep them!</string>
+    <string name="onboarding_story1_body">Point your camera at any plant. It hops into a little pot and joins your collection.</string>
+    <string name="onboarding_story1_art">Drip the watering can next to a camera and a potted plant</string>
+
+    <string name="onboarding_story2_title">Walking fills the tank</string>
+    <string name="onboarding_story2_body">Every walk fills Drip\'s tank with water. Your plants drink every day, and they wilt if you stop walking.</string>
+    <string name="onboarding_story2_art">Drip next to water drops and a thirsty potted plant</string>
+
+    <string name="onboarding_story3_title">Explore new places</string>
+    <string name="onboarding_story3_body">Walk somewhere new to earn an elixir. One elixir brings a withered plant back to life.</string>
+    <string name="onboarding_story3_art">Drip cheering beside an elixir bottle and a map pin</string>
+
+    <!-- Permission cards -->
+    <string name="onboarding_allow">Allow</string>
+    <string name="onboarding_not_now">Not now</string>
+    <string name="onboarding_get_health_connect">Get Health Connect</string>
+    <string name="onboarding_permission_progress">%1$d of %2$d</string>
+    <string name="onboarding_preparing">Getting ready…</string>
+
+    <string name="onboarding_camera_title">Camera</string>
+    <string name="onboarding_camera_body">I need the camera so you can snap plants and turn them into cards.</string>
+    <string name="onboarding_camera_art">Drip peeking through a camera</string>
+
+    <string name="onboarding_activity_title">Steps</string>
+    <string name="onboarding_activity_body">Counting your steps lets every stroll pour water into my tank.</string>
+    <string name="onboarding_activity_art">Drip with a walking figure</string>
+
+    <string name="onboarding_location_title">Location while you play</string>
+    <string name="onboarding_location_body">Knowing where you walk, only while the app is open, lets me light up new places on your map.</string>
+    <string name="onboarding_location_art">Drip next to a map pin</string>
+
+    <string name="onboarding_notifications_title">Gentle nudges</string>
+    <string name="onboarding_notifications_body">I can ping you when a plant gets thirsty, and you can switch it off anytime.</string>
+    <string name="onboarding_notifications_art">Drip next to a little bell</string>
+
+    <string name="onboarding_health_title">Health Connect</string>
+    <string name="onboarding_health_body">Reading your daily steps from Health Connect means even walks without the app still water your garden.</string>
+    <string name="onboarding_health_install_body">Health Connect lets walks without the app water your garden too. Want to grab it?</string>
+    <string name="onboarding_health_art">Drip next to a heart</string>
+</resources>

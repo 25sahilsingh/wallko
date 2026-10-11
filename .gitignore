@@ -1,0 +1,24 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Local secrets and plant-db caches
+tools/plantdb/.env
+tools/plantdb/cache/
+
+# ML research build outputs and venv (large)
+tools/ml-research/out/
+tools/ml-research/venv/
+.kotlin/

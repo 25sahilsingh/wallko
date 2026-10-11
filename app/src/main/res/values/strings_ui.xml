@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Shared components (ui/components) -->
+
+    <!-- Dawn badge -->
+    <string name="ui_dawn_badge_label">×%1$d early bird</string>
+    <string name="ui_dawn_badge_description">Early bird bonus: drops times %1$d</string>
+
+    <!-- Drops and elixir -->
+    <plurals name="ui_drops_count">
+        <item quantity="one">%1$d drop</item>
+        <item quantity="other">%1$d drops</item>
+    </plurals>
+    <string name="ui_drops_plus">+%1$d</string>
+    <plurals name="ui_elixir_count">
+        <item quantity="one">%1$d elixir</item>
+        <item quantity="other">%1$d elixirs</item>
+    </plurals>
+    <string name="ui_elixir_short">×%1$d</string>
+    <string name="ui_elixir_progress">%1$s, next elixir %2$d percent there</string>
+    <string name="ui_elixir_open">Open elixirs</string>
+
+    <!-- Water tank -->
+    <plurals name="ui_tank_description">
+        <item quantity="one">Water tank %1$d of %2$d drop</item>
+        <item quantity="other">Water tank %1$d of %2$d drops</item>
+    </plurals>
+    <string name="ui_tank_label">%1$d / %2$d</string>
+    <plurals name="ui_tank_unit">
+        <item quantity="one">drop</item>
+        <item quantity="other">drops</item>
+    </plurals>
+    <string name="ui_tank_open">Open water tank</string>
+
+    <!-- Polaroid -->
+    <string name="ui_polaroid_description">Your photo of this plant</string>
+
+    <!-- Potted plant default descriptions -->
+    <string name="ui_pot_seedling">Seedling in a pot</string>
+    <string name="ui_pot_growing">Growing plant in a pot</string>
+    <string name="ui_pot_grown">Fully grown plant in a pot</string>
+    <string name="ui_pot_wilting">Wilting plant, it needs water</string>
+    <string name="ui_pot_withered">Withered plant, sleeping</string>
+
+    <!-- Rarity -->
+    <string name="ui_rarity_common">Common</string>
+    <string name="ui_rarity_uncommon">Uncommon</string>
+    <string name="ui_rarity_rare">Rare</string>
+    <string name="ui_rarity_epic">Epic</string>
+    <string name="ui_rarity_legendary">Legendary</string>
+    <string name="ui_rarity_description">Rarity: %1$s</string>
+
+    <!-- Stat rows -->
+    <string name="ui_stat_description">%1$s: %2$s</string>
+    <string name="ui_stat_description_estimated">%1$s: %2$s, estimated</string>
+    <string name="ui_stat_thirst">Thirst</string>
+    <string name="ui_stat_sun">Sun</string>
+    <string name="ui_stat_growth">Growth</string>
+    <plurals name="ui_stat_drops_of">
+        <item quantity="one">%1$d of %2$d drop</item>
+        <item quantity="other">%1$d of %2$d drops</item>
+    </plurals>
+    <plurals name="ui_stat_suns_of">
+        <item quantity="one">%1$d of %2$d sun</item>
+        <item quantity="other">%1$d of %2$d suns</item>
+    </plurals>
+    <string name="ui_growth_fast">Fast</string>
+    <string name="ui_growth_medium">Medium</string>
+    <string name="ui_growth_slow">Slow</string>
+    <string name="ui_estimated_hint">Estimated value</string>
+    <string name="ui_estimated_mark">~</string>
+    <string name="ui_show_hint">Show hint</string>
+
+    <!-- Scan confidence leaves -->
+    <string name="ui_leaves_5">Very sure</string>
+    <string name="ui_leaves_4">Pretty sure</string>
+    <string name="ui_leaves_3">Maybe</string>
+    <string name="ui_leaves_2">Not sure</string>
+    <string name="ui_leaves_1">Just a guess</string>
+    <plurals name="ui_confidence_description">
+        <item quantity="one">Confidence: %1$d of %2$d leaf, %3$s</item>
+        <item quantity="other">Confidence: %1$d of %2$d leaves, %3$s</item>
+    </plurals>
+
+    <!-- Plant card -->
+    <plurals name="ui_card_rare_bonus">
+        <item quantity="one">+%1$d drop for a rare find!</item>
+        <item quantity="other">+%1$d drops for a rare find!</item>
+    </plurals>
+</resources>

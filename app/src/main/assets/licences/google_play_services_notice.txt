@@ -1,0 +1,14 @@
+ML Kit (subject segmentation) and Google Play services (location)
+
+These libraries are provided by Google LLC as part of Google Play services.
+They are not open source; their use is governed by the Google APIs Terms of
+Service and the ML Kit Terms of Service:
+
+  https://developers.google.com/terms
+  https://developers.google.com/ml-kit/terms
+
+Subject segmentation runs entirely on your phone. Wallko does not send your
+photos anywhere.
+
+Open-source components bundled inside Google Play services list their own
+licences in the system "Third-party licences" screen of Google Play services.
