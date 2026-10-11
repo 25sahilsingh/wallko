@@ -83,6 +83,10 @@ object ClassifierMath {
     fun withoutBackground(scores: FloatArray, backgroundIndex: Int): List<Pair<Int, Float>> =
         scores.indices.filter { it != backgroundIndex }.map { it to scores[it] }
 
+    /** True when the background ("not a plant") row scores at or above [GameRules.Ml.MAX_BACKGROUND_SCORE]. */
+    fun isBackground(scores: FloatArray, backgroundIndex: Int): Boolean =
+        (scores.getOrNull(backgroundIndex) ?: 0f) >= GameRules.Ml.MAX_BACKGROUND_SCORE
+
     /**
      * Top-3 (background dropped) + confidence rule from [GameRules.isConfident].
      * Only guesses scoring at least [GameRules.Ml.MIN_GUESS_SCORE] are kept, and none at all when the
@@ -90,10 +94,8 @@ object ClassifierMath {
      * The confidence rule still uses the unfiltered runner-up score for its margin.
      */
     fun buildClassification(scores: FloatArray, labels: List<SpeciesLabel>, backgroundIndex: Int, k: Int = 3): Classification {
-        val background = scores.getOrNull(backgroundIndex) ?: 0f
-        val ranked = topK(scores, k, backgroundIndex)
-        if (background >= GameRules.Ml.MAX_BACKGROUND_SCORE) return Classification(emptyList(), confident = false)
-        val top = ranked.filter { scores[it] >= GameRules.Ml.MIN_GUESS_SCORE }.map { i ->
+        if (isBackground(scores, backgroundIndex)) return Classification.NONE
+        val ranked = topK(scores, k, backgroundIndex).map { i ->
             val label = labels.getOrNull(i)
             Guess(
                 outputIndex = i,
@@ -102,8 +104,17 @@ object ClassifierMath {
                 score = scores[i],
             )
         }
+        return filterGuesses(ranked)
+    }
+
+    /**
+     * Keeps the [ranked] (best-first, unfiltered) guesses scoring at least [GameRules.Ml.MIN_GUESS_SCORE].
+     * [GameRules.isConfident] uses the unfiltered runner-up for its margin.
+     */
+    fun filterGuesses(ranked: List<Guess>): Classification {
+        val top = ranked.filter { it.score >= GameRules.Ml.MIN_GUESS_SCORE }
         val top1 = top.getOrNull(0)?.score ?: 0f
-        val top2 = ranked.getOrNull(1)?.let { scores[it] } ?: 0f
+        val top2 = ranked.getOrNull(1)?.score ?: 0f
         return Classification(top, confident = top.isNotEmpty() && GameRules.isConfident(top1, top2))
     }
 }

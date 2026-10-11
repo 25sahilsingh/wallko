@@ -1,6 +1,6 @@
 package com.example.wallko.ml.di
 
-import com.example.wallko.ml.classifier.AiyPlantClassifier
+import com.example.wallko.ml.classifier.HybridPlantClassifier
 import com.example.wallko.ml.classifier.PlantClassifier
 import com.example.wallko.ml.segment.MlKitSubjectSegmenter
 import com.example.wallko.ml.segment.SubjectSegmenter
@@ -17,7 +17,7 @@ import javax.inject.Singleton
 abstract class MlModule {
     @Binds
     @Singleton
-    abstract fun bindPlantClassifier(impl: AiyPlantClassifier): PlantClassifier
+    abstract fun bindPlantClassifier(impl: HybridPlantClassifier): PlantClassifier
 
     @Binds
     @Singleton

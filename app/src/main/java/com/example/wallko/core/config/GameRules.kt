@@ -120,6 +120,12 @@ object GameRules {
          * No guess left → "No plant found".
          */
         const val MIN_GUESS_SCORE = 0.30f
+        /** BioCLIP image side (CLIP: short side resized to this, then centre-cropped square). */
+        const val BIOCLIP_INPUT_SIZE = 224
+        /** BioCLIP score = softmax(this × dot(image, text)); CLIP's learned logit scale. */
+        const val BIOCLIP_LOGIT_SCALE = 100f
+        /** ONNX Runtime intra-op threads for the BioCLIP encoder. */
+        const val BIOCLIP_THREADS = 4
         /** How much of the art style to mix into the photo's own style (1 = pure style, which washes plants pink). */
         const val STYLE_STRENGTH = 0.4f
     }

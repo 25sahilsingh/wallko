@@ -41,6 +41,9 @@ class AiyPlantClassifier @Inject constructor(
         ClassifierMath.buildClassification(e.infer(bitmap), e.labels, e.backgroundIndex)
     }
 
+    /** Every output score, background row included, indexed by model output index. */
+    suspend fun scores(bitmap: Bitmap): FloatArray = withContext(dispatcher) { engine().infer(bitmap) }
+
     /** Every species score (background dropped), indexed by model output index. Used by tests/debug. */
     suspend fun speciesScores(bitmap: Bitmap): List<Pair<Int, Float>> = withContext(dispatcher) {
         val e = engine()
