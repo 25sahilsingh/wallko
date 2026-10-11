@@ -85,23 +85,30 @@ class SpeciesJsonMapperTest {
         assertEquals(2100, LabelMapping.labelIndexToSpeciesIndex(2100))
         assertNull(LabelMapping.labelIndexToSpeciesIndex(LabelMapping.BACKGROUND_OUTPUT_INDEX))
         assertNull(LabelMapping.labelIndexToSpeciesIndex(-1))
-        assertNull(LabelMapping.labelIndexToSpeciesIndex(2102))
+        // Houseplants (BioCLIP-only species) sit after the background index.
+        assertEquals(LabelMapping.FIRST_EXTRA_INDEX, LabelMapping.labelIndexToSpeciesIndex(LabelMapping.FIRST_EXTRA_INDEX))
     }
 
     /** Validates the real bundled asset when tests run from the app module directory. */
     @Test
-    fun bundledAssetParsesWith2101IdentityIndexedRows() {
+    fun bundledAssetHasAiyIdentityRowsThenExtras() {
         val asset = listOf("src/main/assets/plants/species.json", "app/src/main/assets/plants/species.json")
             .map(::File).firstOrNull { it.exists() }
         assumeTrue("species.json not found from working dir", asset != null)
         val file = SpeciesJsonMapper.parse(asset!!.readText())
         assertEquals(SpeciesJsonMapper.peekDbVersion(asset.readText().take(64)), file.dbVersion)
         val rows = SpeciesJsonMapper.toEntities(file)
-        assertEquals(LabelMapping.SPECIES_COUNT, rows.size)
-        rows.forEachIndexed { i, s ->
+        val aiy = rows.take(LabelMapping.SPECIES_COUNT)
+        aiy.forEachIndexed { i, s ->
             assertEquals(i, s.index)
             assertEquals(i, LabelMapping.labelIndexToSpeciesIndex(i))
-            assertTrue(s.latin.isNotBlank() && s.latin != "__background__")
         }
+        rows.drop(LabelMapping.SPECIES_COUNT).forEachIndexed { i, s ->
+            assertEquals(LabelMapping.FIRST_EXTRA_INDEX + i, s.index)
+            assertEquals(s.index, LabelMapping.labelIndexToSpeciesIndex(s.index))
+        }
+        assertTrue(rows.all { it.latin.isNotBlank() && it.latin != "__background__" })
+        // BioCLIP rows are matched to species by latin name, so names must be unique.
+        assertEquals(rows.size, rows.map { it.latin.lowercase() }.toSet().size)
     }
 }

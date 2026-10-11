@@ -60,7 +60,13 @@ class PlantRepository @Inject constructor(
 
     suspend fun byIndex(index: Int): PlantSpecies? = dao.byIndex(index)
 
-    /** Classifier output index → species index; null for the background class. */
+    /** Latin name → species index for every catalogue row (seeds first if needed). */
+    suspend fun speciesIndexByLatin(): Map<String, Int> {
+        ensureSeeded()
+        return dao.latinNames().associate { it.latin to it.index }
+    }
+
+    /** Classifier guess index → species index; null for the background class. */
     fun labelIndexToSpeciesIndex(outputIndex: Int): Int? = LabelMapping.labelIndexToSpeciesIndex(outputIndex)
 
     private companion object {

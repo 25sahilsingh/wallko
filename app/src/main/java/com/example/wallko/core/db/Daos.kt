@@ -26,6 +26,9 @@ interface PlantSpeciesDao {
     @Query("SELECT COUNT(*) FROM plant_species")
     fun observeCount(): Flow<Int>
 
+    @Query("SELECT `index`, latin FROM plant_species")
+    suspend fun latinNames(): List<SpeciesLatinName>
+
     /** Reseeding replaces rows in place; owned plants keep pointing at the same index. */
     @Upsert
     suspend fun upsertAll(species: List<PlantSpecies>)

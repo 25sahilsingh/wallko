@@ -10,6 +10,9 @@ data class OwnedPlantWithSpecies(
     val species: PlantSpecies,
 )
 
+/** Just a species' index and Latin name (BioCLIP row → species lookup). */
+data class SpeciesLatinName(val index: Int, val latin: String)
+
 /** A walk with its GPS points (unordered from Room; sort by `at` before drawing). */
 data class WalkWithPoints(
     @Embedded val walk: Walk,

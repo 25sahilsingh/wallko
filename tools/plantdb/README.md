@@ -18,6 +18,12 @@ python3 build.py                                # 5. write species.json (always 
 
 `build.py` works at any stage. With only labels, every care field uses a type default.
 
+Houseplants that BioCLIP can name but AIY lacks are hand-written in `extra_species.json` (latin, common,
+family, type, thirst, sun, growth, badges; rarity defaults to COMMON). `build.py` appends them from index
+**2102** (2101 stays AIY's background), skipping nothing, so keep it free of names AIY already has.
+`python3 build.py --extras-only` swaps just those rows into the existing `species.json` without the caches.
+The app matches BioCLIP rows to these rows by Latin name.
+
 ## Scripts
 
 | Script | What it does |
