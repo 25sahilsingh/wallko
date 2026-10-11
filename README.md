@@ -44,7 +44,7 @@ From the command line (create `local.properties` with `sdk.dir=/path/to/Android/
 adb install -r app/build/outputs/apk/debug/app-debug.apk   # or install an existing APK
 
 ./gradlew testDebugUnitTest             # JVM unit tests
-./gradlew connectedDebugAndroidTest     # instrumented tests (needs a phone or emulator)
+./gradlew connectedDebugAndroidTest     # instrumented tests (needs a phone or an ARM emulator image)
 ```
 
 The release build type has no signing config. Add your own (and keep the keystore out of git) if you
@@ -56,17 +56,22 @@ Wallko ships with Google's **AIY Plants V1** classifier (about 5 MB, inside the 
 whether the photo shows a plant at all and names it when nothing better is available.
 
 The better namer is **BioCLIP** (int8 ONNX, about 92 MB in total with its label table). It is not in
-the APK. Automatic download on first run is planned but **not built yet**. For now, get the three files
-(`bioclip_img_int8.onnx`, `text_table_f32.bin`, `text_labels.txt`) from the GitHub release
-[`bioclip-v1`](https://github.com/25sahilsingh/wallko/releases/tag/bioclip-v1) and copy them to the phone:
+the APK. On first run the app downloads its three files (`bioclip_img_int8.onnx`, `text_table_f32.bin`,
+`text_labels.txt`) from the GitHub release
+[`bioclip-v1`](https://github.com/25sahilsingh/wallko/releases/tag/bioclip-v1) in the background, only
+on Wi-Fi (an unmetered network) and when the battery isn't low. Each file is checked for size and
+SHA-256 before it is used. Until the download finishes, scans use the built-in AIY model only; nothing
+else changes.
+
+For development you can still copy the files to the phone yourself; the app uses them if the
+downloaded copy isn't there (and then skips the download):
 
 ```sh
 adb push bioclip_img_int8.onnx text_table_f32.bin text_labels.txt \
     /sdcard/Android/data/com.example.wallko/files/bioclip/
 ```
 
-Without these files the app works normally with the built-in AIY model only. AIY always acts as the
-"is this a plant?" gate; BioCLIP only renames photos that pass it. Details:
+AIY always acts as the "is this a plant?" gate; BioCLIP only renames photos that pass it. Details:
 [`docs/ml-pipeline.md`](docs/ml-pipeline.md).
 
 ## Permissions
@@ -79,7 +84,7 @@ Without these files the app works normally with the built-in AIY model only. AIY
 | `ACTIVITY_RECOGNITION` | Step counting from the phone's sensor |
 | `android.health.permission.READ_STEPS` | Passive daily steps from Health Connect (optional) |
 | `POST_NOTIFICATIONS`, `VIBRATE` | Walk notification, morning nudge and wilting alerts (can be turned off) |
-| `INTERNET`, `ACCESS_NETWORK_STATE` | Map tiles |
+| `INTERNET`, `ACCESS_NETWORK_STATE` | Map tiles; one-time download of the BioCLIP plant-naming model (Wi-Fi only) |
 
 Permissions are asked one at a time during onboarding, each with an explanation.
 
@@ -97,7 +102,8 @@ Permissions are asked one at a time during onboarding, each with an explanation.
 
 - **AIY Plants V1** classifier and **Magenta** arbitrary image stylization models: Copyright Google
   LLC, Apache License 2.0. Bundled unmodified.
-- **BioCLIP** (`imageomics/bioclip`): MIT licence. Distributed through the GitHub release, not bundled.
+- **BioCLIP** (`imageomics/bioclip`): MIT licence. Not bundled: the app downloads it on first run from
+  the GitHub release `bioclip-v1`.
 - Style images are original works (CC0). Fonts, map data and libraries have their own licences, listed
   in `app/src/main/assets/licences/` and in the app under **Settings > About and licences**.
 

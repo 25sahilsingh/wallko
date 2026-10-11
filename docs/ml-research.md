@@ -12,7 +12,8 @@ held the venv, the models and the test photos, so all of those need rebuilding (
 | Pink sprite fix (style blended 0.4 with the photo's own style) | In app, installed |
 | Collection "Epic" chip off screen (rarity chips now wrap with FlowRow) | In app, installed |
 | BioCLIP on-device speed test (`androidTest/.../ml/BioClipDeviceTest.kt`) | **Run** on Redmi 21061119BI (8 cores, int8, 4 threads): load 794 ms, about 620–720 ms per photo. Right: lucky bamboo 0.98, tulsi 1.00, Red Campion 0.99. Wrong: areca → Nikau palm 0.37, bean → Kudzu 0.20 (no bean in the list), money plant crop → Butcher's-broom 0.35 (money plant 2nd at 0.13). Rooms: low random names 0.12–0.47 |
-| BioCLIP in the real scan flow | On branch `bioclip-scan`, built; waits on phone test. Hybrid as planned below, see [ml-pipeline.md](ml-pipeline.md#identify-synchronous-during-scan). Debug APK 163 → 313 MB (ONNX Runtime for 4 ABIs) |
+| BioCLIP in the real scan flow | On `main`. Hybrid as planned below, see [ml-pipeline.md](ml-pipeline.md#identify-synchronous-during-scan). Debug APK 163 → 313 MB with ONNX Runtime for 4 ABIs, 187 MB after limiting to `arm64-v8a` + `armeabi-v7a` |
+| BioCLIP files on other phones | Downloaded on first run (Wi-Fi, battery not low) from GitHub release `bioclip-v1`, size + SHA-256 checked; AIY only until then. adb push to `<external files>/bioclip/` still works for development. See [ml-pipeline.md](ml-pipeline.md#getting-the-bioclip-files) |
 | Bigger name list from TreeOfLife-10M precomputed embeddings (`tol_fetch.py`, `tol_eval.py`) | Tested on PC: full 109k plants 3/7 right, 44k with common names 4/7, our 2,162 4/7. Big lists lose to rare close relatives. Plan: curated 2–5k list, vectors taken from ToL (no text encoder needed) |
 
 ## The problem
@@ -78,9 +79,9 @@ so it either guesses wrong or scores very low.
    `implementation`). TFLite conversion was abandoned because `ai-edge-torch` pulls
    GBs of CUDA libraries.
 5. **Open questions:**
-   - Size: 87 MB model vs. current APK. For now it is not shipped: the app reads it from
-     `<external files>/bioclip/` (pushed with adb) and falls back to AIY without it. A download is still open.
-   - ORT adds about 30 MB per ABI. Limit ABIs (`arm64-v8a`) only after explaining to the user.
+   - Size: 87 MB model vs. current APK. Not shipped in the APK: the app downloads it on first run
+     into `<files>/bioclip/` (adb push to `<external files>/bioclip/` still works) and uses AIY until then.
+   - ORT adds about 30 MB per ABI. ABIs are now limited to `arm64-v8a` + `armeabi-v7a` (no emulator libs).
    - Scan latency on a mid-range phone. The device test answers this.
 
 ## Running the on-device test

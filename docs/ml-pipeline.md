@@ -10,7 +10,7 @@ How a photo becomes an identified plant and a stylised potted sprite.
 1. CameraX capture → rotate to upright (≤ 1600 px long edge). This bitmap feeds both models.
 2. **AIY** (`assets/models/aiy_plants_v1.tflite`, 5 MB): centre-crop → resize 224×224 → RGB bytes, input `[1,224,224,3] uint8`, output `[1,2102] uint8`, divided by 255. The background class is the **last** output (index 2101, label `__background__`).
 3. **Not a plant:** if the background score is ≥ 0.30 (`MAX_BACKGROUND_SCORE`) show no guesses and only offer a retake. BioCLIP is not run. Measured: room/curtain photos score background 0.66–0.79.
-4. **BioCLIP** (only if the photo passed step 3 and the files are present): read from `<external files>/bioclip/` (`bioclip_img_int8.onnx` 87 MB, `text_table_f32.bin` little-endian float32 rows × 512, `text_labels.txt` one `latin|common` per row). Not in the APK. Loaded once on first scan (ONNX Runtime, 4 threads; about 0.8 s), then about 0.65 s per photo on the Redmi test phone.
+4. **BioCLIP** (only if the photo passed step 3 and the files are present): `bioclip_img_int8.onnx` 87 MB, `text_table_f32.bin` little-endian float32 rows × 512, `text_labels.txt` one `latin|common` per row. Not in the APK; see **Getting the BioCLIP files** below. Loaded once on first scan (ONNX Runtime, 4 threads; about 0.8 s), then about 0.65 s per photo on the Redmi test phone.
    - Preprocessing (CLIP): halve while the short side is ≥ 448, filtered-resize the short side to 224, centre crop 224², `/255`, mean `(0.48145466, 0.4578275, 0.40821073)`, std `(0.26862954, 0.26130258, 0.27577711)`, NCHW float input `pixels`. Android's filtered resize is not PIL's bicubic, so scores can differ slightly from the PC.
    - Score per row = softmax(100 × image·row). Both vectors are already L2-normalised.
    - Row → species: rows 0..2100 are AIY's labels in AIY order, so they are the same species index (checked by name at load; a mismatch disables BioCLIP). Row 2101 is AIY's background and is never a guess. Later rows (houseplants) are matched **by Latin name** to the species catalogue, so a houseplant that AIY already has (coconut, monstera…) lands on the AIY species; `Sansevieria trifasciata` is folded into `Dracaena trifasciata`. Rows that map to the same species have their scores **summed**, because identical prompts split the probability. Rows with no species are dropped.
@@ -19,6 +19,15 @@ How a photo becomes an identified plant and a stylised potted sprite.
 6. **Fallback:** BioCLIP files missing → AIY's own top-3 with the rules in step 5, exactly as before (files are checked again on the next scan). BioCLIP fails to load → AIY only until the app restarts. BioCLIP fails on one photo → AIY for that photo.
 7. Guesses carry the **species index**. AIY species are 0..2100 (= AIY output index). Houseplants AIY lacks are 2102+ (2101 stays unused), hand-written in `tools/plantdb/extra_species.json` and appended to `species.json` by `build.py`; they are COMMON with no observation count.
 8. AIY labels come from the model's embedded metadata (also exported into the species JSON by index). BioCLIP names come from `text_labels.txt`; the card uses the catalogue's names.
+
+## Getting the BioCLIP files
+`BioClipDownloadWorker` (WorkManager + Hilt, like the sprite job) downloads them from the GitHub release `bioclip-v1` into `<files>/bioclip/`. URLs, sizes and SHA-256 are all in `BioClipFiles`.
+
+1. `WallkoApp.onCreate` enqueues it as unique work `bioclip_download` with KEEP, unless the files are already in either location below. Constraints: unmetered network, battery not low.
+2. Each file streams to `<name>.part` while being hashed, is checked for size and SHA-256, then is atomically renamed into place, so the namer never sees a partial file. Files already there with the right size and hash are skipped.
+3. GitHub redirects release assets (`github.com` → `release-assets.githubusercontent.com`); the worker follows up to 5 redirects itself and refuses any that leave https.
+4. A failed run retries with exponential backoff (60 s base), at most 5 runs; after that the next app start enqueues it again. Progress goes to logcat (tag `BioClipDownload`) only.
+5. `BioClipNamer` looks in `<files>/bioclip/` first, then `<external files>/bioclip/` (adb push, for development); the first directory with all three files wins. Scans before the download finishes use AIY only (step 6 above).
 
 ## Make the potted sprite (asynchronous, WorkManager, after the card exists)
 1. ML Kit subject segmentation on the original photo → foreground mask + bounding box.
